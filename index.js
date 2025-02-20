@@ -1,9 +1,11 @@
 require('dotenv').config();
-const express = require('express');
-const conexion = require('./src/database/connectionMysql');
-const bodyParser = require('body-parser');
-const cors = require ("cors");
+require('./src/database/initSequelize');
 
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require("cors");
+
+// Importar rutas
 const administradorRoutes = require('./src/routes/administradorRoutes');
 const alumnoRoutes = require('./src/routes/alumnoRoutes');
 const asignacionRoutes = require('./src/routes/asignacionRoutes');
@@ -18,68 +20,35 @@ const seccionRoutes = require('./src/routes/seccionRoutes');
 const unidadRoutes = require('./src/routes/unidadRoutes');
 const municipioRoutes = require('./src/routes/municipioRoutes');
 
-
 const app = express();
 
-app.use(cors()); 
+// Configuración de middlewares
+app.use(cors());
 app.use(express.json());
+app.use(bodyParser.json()); // Body parser para JSON
 
+// Definir rutas correctamente
+app.use('/api/administradores', administradorRoutes);
+app.use('/api/alumnos', alumnoRoutes);
+app.use('/api/asignaciones', asignacionRoutes);
+app.use('/api/ciclos', cicloEscolarRoutes);
+app.use('/api/cursos-ciclo', cursoCicloEscolarRoutes);
+app.use('/api/cursos', cursoRoutes);
+app.use('/api/departamentos', departamentoRoutes);
+app.use('/api/municipios', municipioRoutes);
+app.use('/api/encargados', encargadoRoutes);
+app.use('/api/grados', gradoRoutes);
+app.use('/api/profesores', profesorRoutes);
+app.use('/api/secciones', seccionRoutes);
+app.use('/api/unidades', unidadRoutes);
 
-// Middleware para parsear JSON
-app.use(bodyParser.json());
-
-// Usar las rutas de administrador
-app.use('/api', administradorRoutes);
-
-// Usar las rutas de alumno
-app.use('/api', alumnoRoutes);
-
-// Usar las rutas de asignación
-app.use('/api', asignacionRoutes);
-
-// Usar las rutas de ciclo escolar
-app.use('/api', cicloEscolarRoutes);
-
-// Usar las rutas de curso ciclo escolar
-app.use('/api', cursoCicloEscolarRoutes);
-
-// Usar las rutas de curso
-app.use('/api', cursoRoutes);
-
-// Usar las rutas de departamento
-app.use('/api', departamentoRoutes);
-
-// Usar las rutas de municipio
-app.use('/api', municipioRoutes);
-
-// Usar las rutas de encargado
-app.use('/api', encargadoRoutes);
-
-// Usar las rutas de grado
-app.use('/api', gradoRoutes);
-
-// Usar las rutas de profesor
-app.use('/api', profesorRoutes);
-
-// Usar las rutas de seccion
-app.use('/api', seccionRoutes);
-
-// Usar las rutas de unidad
-app.use('/api', unidadRoutes);
-
-// Configuración del puerto
-const PORT = process.env.PORT || 3000;
-
-// Middleware para parsear JSON
-app.use(express.json());
-
-// Ruta básica
+// Ruta de prueba
 app.get('/', (req, res) => {
     res.send('¡Servidor funcionando y conectado a la base de datos!');
 });
 
-// Iniciar el servidor
+// Iniciar servidor
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Servidor escuchando en http://localhost:${PORT}`);
+    console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
-
