@@ -25,10 +25,10 @@ const app = express();
 // Configuración de middlewares
 app.use(cors());
 app.use(express.json());
-app.use(bodyParser.json()); // Body parser para JSON
+app.use(bodyParser.json()); 
 
-// Definir rutas correctamente
-app.use('/api/administradores', administradorRoutes);
+// Definir rutas 
+app.use('/api', administradorRoutes);
 app.use('/api/alumnos', alumnoRoutes);
 app.use('/api/asignaciones', asignacionRoutes);
 app.use('/api/ciclos', cicloEscolarRoutes);

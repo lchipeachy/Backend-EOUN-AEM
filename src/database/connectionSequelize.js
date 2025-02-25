@@ -5,4 +5,4 @@ const sequelize = new Sequelize('dbantoniaestradamonzon', 'root', '1998', {
     dialect: 'mysql',
 });
 
-module.exports = sequelize;
+module.exports = {sequelize};

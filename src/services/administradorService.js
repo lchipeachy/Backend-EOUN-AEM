@@ -1,11 +1,14 @@
-const { administrador } = require('../models/administradorModel');
+const { administradorModel } = require('../models/administradorModel');
+//const { sequelize } = require('../database/initSequelize');
 
 class AdministradorService {
 
 async getAllAdministradores() {
     try {
-        const administradores = await administrador.findAll();
+        const administradores = await administradorModel.findAll();
         return administradores;
+        //console.log(administradorModel);
+        //return '';
     } catch (error) {
         console.error('Error al obtener los administradores:', error);
         throw new Error('Error al recuperar los administradores');
@@ -15,11 +18,11 @@ async getAllAdministradores() {
 // Obtener un administrador por su código
 async getAdministradorByCodigo(codigoAdministrador) {
     try {
-        const admin = await administrador.findOne({ where: { codigoAdministrador } });
-        if (!admin) {
+        const administradores = await administradorModel.findOne({ where: { codigoAdministrador } });
+        if (!administradores) {
             throw new Error('Administrador no encontrado');
         }
-        return admin;
+        return administradores;
     } catch (error) {
         console.error('Error al obtener el administrador:', error);
         throw new Error('Error al recuperar el administrador');

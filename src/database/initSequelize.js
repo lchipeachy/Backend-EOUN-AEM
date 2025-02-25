@@ -1,5 +1,5 @@
 const { Sequelize } = require('sequelize');
-const sequelize = require('./connectionSequelize');
+const {sequelize}= require('./connectionSequelize');
 const AdministradorModel = require('../models/administradorModel');
 
 sequelize.sync({ force: false }) // force: false evita que se borren las tablas existentes
