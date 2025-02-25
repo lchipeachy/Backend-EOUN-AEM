@@ -68,7 +68,7 @@ async deleteAdministrador(codigoAdministrador) {
         return { message: 'Administrador eliminado correctamente' };
         } catch (error) {
             console.error('Error al eliminar el administrador:', error);
-            throw new Error('Error al eliminar el administrador');
+            throw new Error('Error al eliminar el administrador');;
         }
     }
 }
