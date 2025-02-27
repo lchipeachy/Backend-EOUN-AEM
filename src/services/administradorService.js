@@ -7,8 +7,6 @@ async getAllAdministradores() {
     try {
         const administradores = await administradorModel.findAll();
         return administradores;
-        //console.log(administradorModel);
-        //return '';
     } catch (error) {
         console.error('Error al obtener los administradores:', error);
         throw new Error('Error al recuperar los administradores');
@@ -32,7 +30,7 @@ async getAdministradorByCodigo(codigoAdministrador) {
 // Crear un nuevo administrador
 async createAdministrador(adminData) {
     try {
-        const nuevoAdministrador = await administrador.create(adminData);
+        const nuevoAdministrador = await administradorModel.create(adminData);
         return nuevoAdministrador;
     } catch (error) {
         if (error.name === 'SequelizeUniqueConstraintError') {
@@ -45,11 +43,11 @@ async createAdministrador(adminData) {
 // Actualizar un administrador
     async updateAdministrador(codigoAdministrador, adminData) {
     try {
-        const [updated] = await administrador.update(adminData, { where: { codigoAdministrador } });
+        const [updated] = await administradorModel.update(adminData, { where: { codigoAdministrador } });
         if (updated === 0) {
             throw new Error('Administrador no encontrado');
         }
-        const adminActualizado = await administrador.findOne({ where: { codigoAdministrador } });
+        const adminActualizado = await administradorModel.findOne({ where: { codigoAdministrador } });
         return adminActualizado;
     } catch (error) {
         console.error('Error al actualizar el administrador:', error);
@@ -61,7 +59,7 @@ async createAdministrador(adminData) {
 // Eliminar un administrador
 async deleteAdministrador(codigoAdministrador) {
     try {
-        const deleted = await administrador.destroy({ where: { codigoAdministrador } });
+        const deleted = await administradorModel.destroy({ where: { codigoAdministrador } });
         if (deleted === 0) {
             throw new Error('Administrador no encontrado');
         }
