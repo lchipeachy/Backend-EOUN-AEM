@@ -1,9 +1,10 @@
-const { alumno } = require("../models/alumnoModel"); 
+const { alumnoModel } = require("../models/alumnoModel"); 
 
 class AlumnoService {
+
   async getAllAlumnos() {
     try {
-      const alumnos = await alumno.findAll();
+      const alumnos = await alumnoModel.findAll();
       return alumnos;
     } catch (error) {
       console.error("Error al obtener los alumnos:", error);
@@ -14,7 +15,7 @@ class AlumnoService {
   // Obtener un alumno por su código
   async getAlumnoByCodigo(codigoAlumno) {
     try {
-      const alumnoEncontrado = await alumno.findOne({
+      const alumnoEncontrado = await alumnoModel.findOne({
         where: { codigoAlumno },
       });
       if (!alumnoEncontrado) {
@@ -30,7 +31,7 @@ class AlumnoService {
   // Crear un nuevo alumno
   async createAlumno(alumnoData) {
     try {
-      const nuevoAlumno = await alumno.create(alumnoData);
+      const nuevoAlumno = await alumnoModel.create(alumnoData);
       return nuevoAlumno;
     } catch (error) {
       console.error("Error al crear el alumno:", error);
@@ -41,13 +42,13 @@ class AlumnoService {
   // Actualizar un alumno
   async updateAlumno(codigoAlumno, alumnoData) {
     try {
-      const [updated] = await alumno.update(alumnoData, {
+      const [updated] = await alumnoModel.update(alumnoData, {
         where: { codigoAlumno },
       });
       if (updated === 0) {
         throw new Error("Alumno no encontrado");
       }
-      const alumnoActualizado = await alumno.findOne({
+      const alumnoActualizado = await alumnoModel.findOne({
         where: { codigoAlumno },
       });
       return alumnoActualizado;
@@ -60,7 +61,7 @@ class AlumnoService {
   // Eliminar un alumno
   async deleteAlumno(codigoAlumno) {
     try {
-      const deleted = await alumno.destroy({ where: { codigoAlumno } });
+      const deleted = await alumnoModel.destroy({ where: { codigoAlumno } });
       if (deleted === 0) {
         throw new Error("Alumno no encontrado");
       }
