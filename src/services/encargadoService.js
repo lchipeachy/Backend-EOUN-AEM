@@ -1,10 +1,10 @@
-const { encargado } = require('../models/encargadoModel'); 
+const { encargadoModel } = require('../models/encargadoModel'); 
 
 class EncargadoService {
   // Obtener todos los encargados
     async getAllEncargados() {
         try {
-        return await encargado.findAll();
+        return await encargadoModel.findAll();
         } catch (error) {
         console.error('Error al obtener los encargados:', error);
         throw new Error('Error al recuperar los encargados');
@@ -14,7 +14,7 @@ class EncargadoService {
   // Obtener un encargado por ID
     async getEncargadoById(id) {
         try {
-        return await encargado.findByPk(id);
+        return await encargadoModel.findByPk(id);
         } catch (error) {
         console.error('Error al obtener el encargado:', error);
         throw new Error('Error al recuperar el encargado');
@@ -24,7 +24,7 @@ class EncargadoService {
   // Crear un nuevo encargado
     async createEncargado(data) {
         try {
-        return await encargado.create(data);
+        return await encargadoModel.create(data);
         } catch (error) {
         console.error('Error al crear el encargado:', error);
         throw new Error('Error al registrar el encargado');
@@ -34,7 +34,7 @@ class EncargadoService {
   // Actualizar un encargado por ID
     async updateEncargado(id, data) {
         try {
-        const encargadoActualizado = await encargado.update(data, {
+        const encargadoActualizado = await encargadoModel.update(data, {
             where: { codigoEncargado: id }
         });
         return encargadoActualizado;
@@ -47,7 +47,7 @@ class EncargadoService {
   // Eliminar un encargado por ID
     async deleteEncargado(id) {
         try {
-        return await encargado.destroy({
+        return await encargadoModel.destroy({
             where: { codigoEncargado: id }
         });
         } catch (error) {

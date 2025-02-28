@@ -36,7 +36,7 @@ app.use('/api', cursoCicloEscolarRoutes);
 app.use('/api', cursoRoutes);
 app.use('/api/departamentos', departamentoRoutes);
 app.use('/api/municipios', municipioRoutes);
-app.use('/api/encargados', encargadoRoutes);
+app.use('/api', encargadoRoutes);
 app.use('/api/grados', gradoRoutes);
 app.use('/api/profesores', profesorRoutes);
 app.use('/api/secciones', seccionRoutes);
