@@ -1,11 +1,11 @@
-const { cursocicloescolar } = require('../models/cursoCicloEscolarModel'); 
+const { cursocicloescolar, cursoCicloModel } = require('../models/cursoCicloEscolarModel'); 
 
 class CursoCicloEscolarService {
 
   // Obtener todos los cursos ciclo escolar
     async getAllCursosCicloEscolar() {
         try {
-        const cursosCicloEscolar = await cursocicloescolar.findAll();
+        const cursosCicloEscolar = await cursoCicloModel.findAll();
         return cursosCicloEscolar;
         } catch (error) {
         console.error('Error al obtener los cursos ciclo escolar:', error);
@@ -16,7 +16,7 @@ class CursoCicloEscolarService {
   // Obtener un curso ciclo escolar por su código
     async getCursoCicloEscolarByCodigo(codigoCursoCicloEscolar) {
         try {
-        const cursoCicloEscolar = await cursocicloescolar.findOne({ where: { codigoCursoCicloEscolar } });
+        const cursoCicloEscolar = await cursoCicloModel.findOne({ where: { codigoCursoCicloEscolar } });
         if (!cursoCicloEscolar) {
             throw new Error('Curso ciclo escolar no encontrado');
         }
@@ -30,7 +30,7 @@ class CursoCicloEscolarService {
   // Crear un nuevo curso ciclo escolar
     async createCursoCicloEscolar(cursoCicloEscolarData) {
         try {
-        const nuevoCursoCicloEscolar = await cursocicloescolar.create(cursoCicloEscolarData);
+        const nuevoCursoCicloEscolar = await cursoCicloModel.create(cursoCicloEscolarData);
         return nuevoCursoCicloEscolar;
         } catch (error) {
         console.error('Error al crear el curso ciclo escolar:', error);
@@ -41,11 +41,11 @@ class CursoCicloEscolarService {
   // Actualizar un curso ciclo escolar
     async updateCursoCicloEscolar(codigoCursoCicloEscolar, cursoCicloEscolarData) {
         try {
-        const [updated] = await cursocicloescolar.update(cursoCicloEscolarData, { where: { codigoCursoCicloEscolar } });
+        const [updated] = await cursoCicloModel.update(cursoCicloEscolarData, { where: { codigoCursoCicloEscolar } });
         if (updated === 0) {
             throw new Error('Curso ciclo escolar no encontrado');
         }
-        const cursoActualizado = await cursocicloescolar.findOne({ where: { codigoCursoCicloEscolar } });
+        const cursoActualizado = await cursoCicloModel.findOne({ where: { codigoCursoCicloEscolar } });
         return cursoActualizado;
         } catch (error) {
         console.error('Error al actualizar el curso ciclo escolar:', error);
@@ -56,7 +56,7 @@ class CursoCicloEscolarService {
   // Eliminar un curso ciclo escolar
     async deleteCursoCicloEscolar(codigoCursoCicloEscolar) {
         try {
-        const deleted = await cursocicloescolar.destroy({ where: { codigoCursoCicloEscolar } });
+        const deleted = await cursoCicloModel.destroy({ where: { codigoCursoCicloEscolar } });
         if (deleted === 0) {
             throw new Error('Curso ciclo escolar no encontrado');
         }

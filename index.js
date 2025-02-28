@@ -32,7 +32,7 @@ app.use('/api', administradorRoutes);
 app.use('/api', alumnoRoutes);
 app.use('/api', asignacionRoutes);
 app.use('/api', cicloEscolarRoutes);
-app.use('/api/cursos-ciclo', cursoCicloEscolarRoutes);
+app.use('/api', cursoCicloEscolarRoutes);
 app.use('/api/cursos', cursoRoutes);
 app.use('/api/departamentos', departamentoRoutes);
 app.use('/api/municipios', municipioRoutes);

@@ -1,6 +1,7 @@
-const Sequelize = require('sequelize');
-module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('cursocicloescolar', {
+const { DataTypes } = require("sequelize");
+const { sequelize } = require('../database/connectionSequelize');
+
+  const cursoCicloModel = sequelize.define('cursoCiclo', {
     codigoCursoCicloEscolar: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
@@ -52,4 +53,7 @@ module.exports = function(sequelize, DataTypes) {
       },
     ]
   });
-};
+
+  console.log("modelo", cursoCicloModel);
+  module.exports = {cursoCicloModel};
+
