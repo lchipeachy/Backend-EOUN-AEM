@@ -1,11 +1,11 @@
-const { asignacion } = require('../models/asignacionModel'); 
+const { asignacionModel } = require('../models/asignacionModel'); 
 
 class AsignacionService {
 
   // Obtener todas las asignaciones
     async getAllAsignaciones() {
         try {
-        const asignaciones = await asignacion.findAll();
+        const asignaciones = await asignacionModel.findAll();
         return asignaciones;
         } catch (error) {
         console.error('Error al obtener las asignaciones:', error);
@@ -16,7 +16,7 @@ class AsignacionService {
   // Obtener una asignación por su código
     async getAsignacionByCodigo(codigoAsignacion) {
         try {
-        const asig = await asignacion.findOne({ where: { codigoAsignacion } });
+        const asig = await asignacionModel.findOne({ where: { codigoAsignacion } });
         if (!asig) {
             throw new Error('Asignación no encontrada');
         }
@@ -30,7 +30,7 @@ class AsignacionService {
   // Crear una nueva asignación
     async createAsignacion(asignacionData) {
         try {
-        const nuevaAsignacion = await asignacion.create(asignacionData);
+        const nuevaAsignacion = await asignacionModel.create(asignacionData);
         return nuevaAsignacion;
         } catch (error) {
         console.error('Error al crear la asignación:', error);
@@ -41,11 +41,11 @@ class AsignacionService {
   // Actualizar una asignación
     async updateAsignacion(codigoAsignacion, asignacionData) {
         try {
-        const [updated] = await asignacion.update(asignacionData, { where: { codigoAsignacion } });
+        const [updated] = await asignacionModel.update(asignacionData, { where: { codigoAsignacion } });
         if (updated === 0) {
             throw new Error('Asignación no encontrada');
         }
-        const asignacionActualizada = await asignacion.findOne({ where: { codigoAsignacion } });
+        const asignacionActualizada = await asignacionModel.findOne({ where: { codigoAsignacion } });
         return asignacionActualizada;
         } catch (error) {
         console.error('Error al actualizar la asignación:', error);
@@ -56,7 +56,7 @@ class AsignacionService {
   // Eliminar una asignación
     async deleteAsignacion(codigoAsignacion) {
         try {
-        const deleted = await asignacion.destroy({ where: { codigoAsignacion } });
+        const deleted = await asignacionModel.destroy({ where: { codigoAsignacion } });
         if (deleted === 0) {
             throw new Error('Asignación no encontrada');
         }

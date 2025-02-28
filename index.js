@@ -30,7 +30,7 @@ app.use(bodyParser.json());
 // Definir rutas 
 app.use('/api', administradorRoutes);
 app.use('/api', alumnoRoutes);
-app.use('/api/asignaciones', asignacionRoutes);
+app.use('/api', asignacionRoutes);
 app.use('/api/ciclos', cicloEscolarRoutes);
 app.use('/api/cursos-ciclo', cursoCicloEscolarRoutes);
 app.use('/api/cursos', cursoRoutes);
