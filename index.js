@@ -31,7 +31,7 @@ app.use(bodyParser.json());
 app.use('/api', administradorRoutes);
 app.use('/api', alumnoRoutes);
 app.use('/api', asignacionRoutes);
-app.use('/api/ciclos', cicloEscolarRoutes);
+app.use('/api', cicloEscolarRoutes);
 app.use('/api/cursos-ciclo', cursoCicloEscolarRoutes);
 app.use('/api/cursos', cursoRoutes);
 app.use('/api/departamentos', departamentoRoutes);

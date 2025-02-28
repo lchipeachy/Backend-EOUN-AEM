@@ -1,11 +1,11 @@
-const { cicloescolar } = require('../models/cicloEscolarModel'); 
+const { cicloModel } = require('../models/cicloEscolarModel'); 
 
 class CicloEscolarService {
 
   // Obtener todos los ciclos escolares
     async getAllCiclosEscolares() {
         try {
-        const ciclosEscolares = await cicloescolar.findAll();
+        const ciclosEscolares = await cicloModel.findAll();
         return ciclosEscolares;
         } catch (error) {
         console.error('Error al obtener los ciclos escolares:', error);
@@ -16,7 +16,7 @@ class CicloEscolarService {
   // Obtener un ciclo escolar por su código
     async getCicloEscolarByCodigo(codigoCicloEscolar) {
         try {
-        const ciclo = await cicloescolar.findOne({ where: { codigoCicloEscolar } });
+        const ciclo = await cicloModel.findOne({ where: { codigoCicloEscolar } });
         if (!ciclo) {
             throw new Error('Ciclo escolar no encontrado');
         }
@@ -30,7 +30,7 @@ class CicloEscolarService {
   // Crear un nuevo ciclo escolar
     async createCicloEscolar(cicloEscolarData) {
         try {
-        const nuevoCicloEscolar = await cicloescolar.create(cicloEscolarData);
+        const nuevoCicloEscolar = await cicloModel.create(cicloEscolarData);
         return nuevoCicloEscolar;
         } catch (error) {
         console.error('Error al crear el ciclo escolar:', error);
@@ -41,11 +41,11 @@ class CicloEscolarService {
   // Actualizar un ciclo escolar
     async updateCicloEscolar(codigoCicloEscolar, cicloEscolarData) {
         try {
-        const [updated] = await cicloescolar.update(cicloEscolarData, { where: { codigoCicloEscolar } });
+        const [updated] = await cicloModel.update(cicloEscolarData, { where: { codigoCicloEscolar } });
         if (updated === 0) {
             throw new Error('Ciclo escolar no encontrado');
         }
-        const cicloActualizado = await cicloescolar.findOne({ where: { codigoCicloEscolar } });
+        const cicloActualizado = await cicloModel.findOne({ where: { codigoCicloEscolar } });
         return cicloActualizado;
         } catch (error) {
         console.error('Error al actualizar el ciclo escolar:', error);
@@ -56,7 +56,7 @@ class CicloEscolarService {
   // Eliminar un ciclo escolar
     async deleteCicloEscolar(codigoCicloEscolar) {
         try {
-        const deleted = await cicloescolar.destroy({ where: { codigoCicloEscolar } });
+        const deleted = await cicloModel.destroy({ where: { codigoCicloEscolar } });
         if (deleted === 0) {
             throw new Error('Ciclo escolar no encontrado');
         }
