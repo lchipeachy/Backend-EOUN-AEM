@@ -1,11 +1,11 @@
-const { curso } = require('../models/cursoModel'); 
+const { cursoModel } = require('../models/cursoModel'); 
 
 class CursoService {
 
   // Obtener todos los cursos
     async getAllCursos() {
         try {
-        const cursos = await curso.findAll();
+        const cursos = await cursoModel.findAll();
         return cursos;
         } catch (error) {
         console.error('Error al obtener los cursos:', error);
@@ -16,7 +16,7 @@ class CursoService {
   // Obtener un curso por su código
     async getCursoByCodigo(codigoCurso) {
         try {
-        const cursoEncontrado = await curso.findOne({ where: { codigoCurso } });
+        const cursoEncontrado = await cursoModel.findOne({ where: { codigoCurso } });
         if (!cursoEncontrado) {
             throw new Error('Curso no encontrado');
         }
@@ -30,7 +30,7 @@ class CursoService {
   // Crear un nuevo curso
     async createCurso(cursoData) {
         try {
-        const nuevoCurso = await curso.create(cursoData);
+        const nuevoCurso = await cursoModel.create(cursoData);
         return nuevoCurso;
         } catch (error) {
         console.error('Error al crear el curso:', error);
@@ -41,11 +41,11 @@ class CursoService {
   // Actualizar un curso
     async updateCurso(codigoCurso, cursoData) {
         try {
-        const [updated] = await curso.update(cursoData, { where: { codigoCurso } });
+        const [updated] = await cursoModel.update(cursoData, { where: { codigoCurso } });
         if (updated === 0) {
             throw new Error('Curso no encontrado');
         }
-        const cursoActualizado = await curso.findOne({ where: { codigoCurso } });
+        const cursoActualizado = await cursoModel.findOne({ where: { codigoCurso } });
         return cursoActualizado;
         } catch (error) {
         console.error('Error al actualizar el curso:', error);
@@ -56,7 +56,7 @@ class CursoService {
   // Eliminar un curso
     async deleteCurso(codigoCurso) {
         try {
-        const deleted = await curso.destroy({ where: { codigoCurso } });
+        const deleted = await cursoModel.destroy({ where: { codigoCurso } });
         if (deleted === 0) {
             throw new Error('Curso no encontrado');
         }
