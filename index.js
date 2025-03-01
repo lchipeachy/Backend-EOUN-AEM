@@ -38,7 +38,7 @@ app.use('/api', departamentoRoutes);
 app.use('/api', municipioRoutes);
 app.use('/api', encargadoRoutes);
 app.use('/api', gradoRoutes);
-app.use('/api/profesores', profesorRoutes);
+app.use('/api', profesorRoutes);
 app.use('/api/secciones', seccionRoutes);
 app.use('/api/unidades', unidadRoutes);
 

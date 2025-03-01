@@ -1,10 +1,10 @@
-const { profesor } = require('../models/profesorModel'); 
+const { profesorModel } = require('../models/profesorModel'); 
 
 class ProfesorService {
     // Obtener todos los profesores
     async getAllProfesores() {
         try {
-        return await profesor.findAll();
+        return await profesorModel.findAll();
         } catch (error) {
         console.error('Error al obtener los profesores:', error);
         throw new Error('Error al recuperar los profesores');
@@ -14,7 +14,7 @@ class ProfesorService {
     // Obtener un profesor por ID
     async getProfesorById(id) {
         try {
-        return await profesor.findByPk(id);
+        return await profesorModel.findByPk(id);
         } catch (error) {
         console.error('Error al obtener el profesor:', error);
         throw new Error('Error al recuperar el profesor');
@@ -24,7 +24,7 @@ class ProfesorService {
     // Crear un nuevo profesor
     async createProfesor(data) {
         try {
-        return await profesor.create(data);
+        return await profesorModel.create(data);
         } catch (error) {
         console.error('Error al crear el profesor:', error);
         throw new Error('Error al registrar el profesor');
@@ -34,7 +34,7 @@ class ProfesorService {
     // Actualizar un profesor por ID
     async updateProfesor(id, data) {
         try {
-        const profesorActualizado = await profesor.update(data, {
+        const profesorActualizado = await profesorModel.update(data, {
             where: { codigoProfesor: id }
         });
         return profesorActualizado;
@@ -47,7 +47,7 @@ class ProfesorService {
     // Eliminar un profesor por ID
     async deleteProfesor(id) {
         try {
-        return await profesor.destroy({
+        return await profesorModel.destroy({
             where: { codigoProfesor: id }
         });
         } catch (error) {

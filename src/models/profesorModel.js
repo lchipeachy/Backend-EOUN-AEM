@@ -1,6 +1,7 @@
-const Sequelize = require('sequelize');
-module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('profesor', {
+const { DataTypes } = require("sequelize");
+const { sequelize } = require('../database/connectionSequelize');
+
+  const profesorModel = sequelize.define('profesor', {
     codigoProfesor: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
@@ -54,4 +55,6 @@ module.exports = function(sequelize, DataTypes) {
       },
     ]
   });
-};
+
+  console.log("modelo", profesorModel);
+  module.exports = {profesorModel};
