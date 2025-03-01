@@ -40,7 +40,7 @@ app.use('/api', encargadoRoutes);
 app.use('/api', gradoRoutes);
 app.use('/api', profesorRoutes);
 app.use('/api', seccionRoutes);
-app.use('/api/unidades', unidadRoutes);
+app.use('/api', unidadRoutes);
 
 // Ruta de prueba
 app.get('/', (req, res) => {

@@ -12,7 +12,7 @@ const MunicipioModel = require('../models/municipioModel');
 const GradoModel = require('../models/gradoModel');
 const ProfesorModel = require('../models/profesorModel');
 const SeccionModel = require('../models/seccionModel');
-
+const UnidadModel = require('../models/unidadModel');
 
 sequelize.sync({ force: false }) // force: false evita que se borren las tablas existentes
   .then(() => {
