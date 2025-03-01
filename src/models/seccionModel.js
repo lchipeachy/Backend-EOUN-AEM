@@ -1,6 +1,7 @@
-const Sequelize = require('sequelize');
-module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('seccion', {
+const { DataTypes } = require("sequelize");
+const { sequelize } = require('../database/connectionSequelize');
+
+  const seccionModel = sequelize.define('seccion', {
     codigoSeccion: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
@@ -41,4 +42,6 @@ module.exports = function(sequelize, DataTypes) {
       },
     ]
   });
-};
+
+  console.log("modelo", seccionModel);
+  module.exports = {seccionModel};

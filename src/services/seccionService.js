@@ -1,10 +1,10 @@
-const { seccion } = require('../models/seccionModel'); 
+const { seccionModel } = require('../models/seccionModel'); 
 
 class SeccionService {
     // Obtener todas las secciones
     async getAllSecciones() {
         try {
-        return await seccion.findAll();
+        return await seccionModel.findAll();
         } catch (error) {
         console.error('Error al obtener las secciones:', error);
         throw new Error('Error al recuperar las secciones');
@@ -14,7 +14,7 @@ class SeccionService {
     // Obtener una sección por ID
     async getSeccionById(id) {
         try {
-        return await seccion.findByPk(id);
+        return await seccionModel.findByPk(id);
         } catch (error) {
         console.error('Error al obtener la sección:', error);
         throw new Error('Error al recuperar la sección');
@@ -24,7 +24,7 @@ class SeccionService {
     // Crear una nueva sección
     async createSeccion(data) {
         try {
-        return await seccion.create(data);
+        return await seccionModel.create(data);
         } catch (error) {
         console.error('Error al crear la sección:', error);
         throw new Error('Error al registrar la sección');
@@ -34,7 +34,7 @@ class SeccionService {
     // Actualizar una sección por ID
     async updateSeccion(id, data) {
         try {
-        const seccionActualizada = await seccion.update(data, {
+        const seccionActualizada = await seccionModel.update(data, {
             where: { codigoSeccion: id }
         });
         return seccionActualizada;
@@ -47,7 +47,7 @@ class SeccionService {
     // Eliminar una sección por ID
     async deleteSeccion(id) {
         try {
-        return await seccion.destroy({
+        return await seccionModel.destroy({
             where: { codigoSeccion: id }
         });
         } catch (error) {

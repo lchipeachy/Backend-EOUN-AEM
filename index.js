@@ -39,7 +39,7 @@ app.use('/api', municipioRoutes);
 app.use('/api', encargadoRoutes);
 app.use('/api', gradoRoutes);
 app.use('/api', profesorRoutes);
-app.use('/api/secciones', seccionRoutes);
+app.use('/api', seccionRoutes);
 app.use('/api/unidades', unidadRoutes);
 
 // Ruta de prueba
