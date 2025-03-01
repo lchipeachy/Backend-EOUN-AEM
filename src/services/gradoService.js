@@ -1,10 +1,10 @@
-const { grado } = require('../models/gradoModel'); 
+const { gradoModel } = require('../models/gradoModel'); 
 
 class GradoService {
   // Obtener todos los grados
     async getAllGrados() {
         try {
-        return await grado.findAll();
+        return await gradoModel.findAll();
         } catch (error) {
         console.error('Error al obtener los grados:', error);
         throw new Error('Error al recuperar los grados');
@@ -14,7 +14,7 @@ class GradoService {
   // Obtener un grado por ID
     async getGradoById(id) {
         try {
-        return await grado.findByPk(id);
+        return await gradoModel.findByPk(id);
         } catch (error) {
         console.error('Error al obtener el grado:', error);
         throw new Error('Error al recuperar el grado');
@@ -24,7 +24,7 @@ class GradoService {
   // Crear un nuevo grado
     async createGrado(data) {
         try {
-        return await grado.create(data);
+        return await gradoModel.create(data);
         } catch (error) {
         console.error('Error al crear el grado:', error);
         throw new Error('Error al registrar el grado');
@@ -34,7 +34,7 @@ class GradoService {
   // Actualizar un grado por ID
     async updateGrado(id, data) {
         try {
-        const gradoActualizado = await grado.update(data, {
+        const gradoActualizado = await gradoModel.update(data, {
             where: { codigoGrado: id }
         });
         return gradoActualizado;
@@ -47,7 +47,7 @@ class GradoService {
   // Eliminar un grado por ID
     async deleteGrado(id) {
         try {
-        return await grado.destroy({
+        return await gradoModel.destroy({
             where: { codigoGrado: id }
         });
         } catch (error) {
