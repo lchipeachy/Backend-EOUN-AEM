@@ -63,7 +63,7 @@ const alumnoModel = sequelize.define('alumno', {
     type: DataTypes.STRING(20),
     allowNull: true
   },
-  gradoId: {
+  codigoGrado: {
     type: DataTypes.STRING(20),
     allowNull: true
   }
