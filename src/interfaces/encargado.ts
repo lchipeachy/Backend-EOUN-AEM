@@ -5,4 +5,5 @@ export interface encargado {
     Telefono: number;
     Celular: number;
     Direccion: string;
+    Parentezco: string;
 }

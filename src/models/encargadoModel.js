@@ -27,6 +27,10 @@ const { sequelize } = require('../database/connectionSequelize');
     Direccion: {
       type: DataTypes.STRING(50),
       allowNull: true
+    },
+    Parentezco: {
+      type: DataTypes.STRING(45),
+      allowNull: true
     }
   }, {
     sequelize,
