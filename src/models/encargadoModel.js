@@ -28,7 +28,7 @@ const { sequelize } = require('../database/connectionSequelize');
       type: DataTypes.STRING(50),
       allowNull: true
     },
-    Parentezco: {
+    Parentesco: {
       type: DataTypes.STRING(45),
       allowNull: true
     }
