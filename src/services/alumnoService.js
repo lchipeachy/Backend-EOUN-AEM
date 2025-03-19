@@ -33,7 +33,7 @@ class AlumnoService {
       const alumnoEncontrado = await sequelize.query(
         `SELECT a.CodigoPersonal, a.Nombre, a.Apellido, a.FechaDeNacimiento, a.Genero, d.nombre AS departamento, m.nombre AS municipio, 
           g.Descripcion AS grado, s.Descripcion AS seccion, 
-          concat(e.Nombre, ' ', e.Apellido) AS encargado, e.Telefono, e.Celular, e.Direccion
+          concat(e.Nombre, ' ', e.Apellido) AS encargado, e.Parentesco, e.Telefono, e.Celular, e.Direccion
           FROM alumno a 
           INNER JOIN grado g ON a.codigoGrado = g.codigoGrado
           INNER JOIN seccion s ON a.codigoSeccion = s.codigoSeccion
