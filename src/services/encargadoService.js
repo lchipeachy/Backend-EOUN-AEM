@@ -21,6 +21,19 @@ class EncargadoService {
         }
     }
 
+    // Obtener un encargado por DPI
+    async getEncargadoByDPI(dpi) {
+      try {
+        console.log("Buscando encargado con DPI:", dpi);
+        return await encargadoModel.findOne({
+          where: { Dpi: dpi.toString() } // Asegurándote de usar 'where'
+        });
+      } catch (error) {
+        console.error('Error al obtener el encargado:', error);
+        throw new Error('Error al recuperar el encargado');
+      }
+    }    
+
   // Crear un nuevo encargado
     async createEncargado(data) {
         try {
