@@ -6,4 +6,5 @@ export interface encargado {
     Celular: number;
     Direccion: string;
     Parentesco: string;
+    Dpi: string;
 }

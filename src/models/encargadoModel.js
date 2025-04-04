@@ -31,6 +31,10 @@ const { sequelize } = require('../database/connectionSequelize');
     Parentesco: {
       type: DataTypes.STRING(45),
       allowNull: true
+    },
+    Dpi: {
+      type: DataTypes.STRING(45),
+      allowNull: true
     }
   }, {
     sequelize,
